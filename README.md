@@ -1,4 +1,4 @@
-# Deploying Todo List Application with Terraform
+# Deploying Todo List Application With Terraform
 
 In this task, you need to create an Azure Virtual Machine using Terraform and deploy a ToDo List application using a VM extension. The Terraform configuration will create all necessary resources, including a resource group, storage account, network security group, virtual network, subnet, public IP, and the virtual machine itself.
 
