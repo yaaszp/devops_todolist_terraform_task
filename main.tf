@@ -20,6 +20,11 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.resource_group_location
+}
+
 module "storage" {
   source                  = "./modules/storage"
   resource_group_name     = var.resource_group_name
@@ -30,8 +35,8 @@ module "storage" {
 
 module "network" {
   source                = "./modules/network"
-  rg_name               = module.storage.rg_name
-  rg_location           = module.storage.rg_location
+  rg_name               = var.resource_group_name
+  rg_location           = var.resource_group_location
   security_group_name   = var.security_group_name
   vnet_name             = var.vnet_name
   subnet_name           = var.subnet_name
@@ -44,8 +49,8 @@ module "network" {
 module "compute" {
   source         = "./modules/compute"
   subnet_id      = module.network.subnet_id
-  rg_name        = module.storage.rg_name
-  rg_location    = module.storage.rg_location
+  rg_name        = var.resource_group_name
+  rg_location    = var.resource_group_location
   blob_url       = module.storage.blob_url
   vm_name        = var.vm_name
   extension_name = var.extension_name
