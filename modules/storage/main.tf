@@ -19,3 +19,4 @@ resource "azurerm_storage_blob" "todoapp-blob" {
   type                   = "Block"
   source                 = "D:\\Terraform\\devops_todolist_terraform_task\\install-app.sh"
 }
+

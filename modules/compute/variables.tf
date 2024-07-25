@@ -47,3 +47,9 @@ variable "key_data" {
   type        = string
   description = "Subnet address prefix"
 }
+
+variable "public_ip_id" {
+  type        = string
+  description = "Public IP id"
+}
+

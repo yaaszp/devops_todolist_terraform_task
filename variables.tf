@@ -82,3 +82,4 @@ variable "key_data" {
   type        = string
   description = "Subnet address prefix"
 }
+

@@ -42,3 +42,4 @@ variable "subnet_address_prefix" {
   type        = string
   description = "Subnet address prefix"
 }
+

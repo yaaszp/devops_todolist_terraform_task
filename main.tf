@@ -18,8 +18,8 @@ resource "azurerm_resource_group" "rg" {
 
 module "storage" {
   source                  = "./modules/storage"
-  resource_group_name     = var.resource_group_name
-  resource_group_location = var.resource_group_location
+  resource_group_name     = azurerm_resource_group.rg.name
+  resource_group_location = azurerm_resource_group.rg.location
   storage_account_name    = var.storage_account_name
   container_name          = var.container_name
 }
@@ -49,5 +49,6 @@ module "compute" {
   admin_username = var.admin_username
   admin_password = var.admin_password
   key_data       = var.key_data
+  public_ip_id   = module.network.public_ip_id
 }
 

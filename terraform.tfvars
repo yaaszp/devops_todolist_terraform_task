@@ -15,3 +15,4 @@ subnet_address_prefix   = "10.0.0.0/24"
 admin_username          = "yaas"
 admin_password          = "Qwerty123"
 key_data                = "C:\\Users\\admin\\.ssh\\id_rsa.pub"
+

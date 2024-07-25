@@ -30,3 +30,4 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method   = "Dynamic"
   domain_name_label   = "${var.domain_name_label}${random_integer.dns_label.result}"
 }
+
