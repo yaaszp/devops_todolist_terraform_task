@@ -26,8 +26,8 @@ module "storage" {
 
 module "network" {
   source                = "./modules/network"
-  rg_name               = var.resource_group_name
-  rg_location           = var.resource_group_location
+  rg_name               = azurerm_resource_group.rg.name
+  rg_location           = azurerm_resource_group.rg.location
   security_group_name   = var.security_group_name
   vnet_name             = var.vnet_name
   subnet_name           = var.subnet_name
@@ -40,8 +40,8 @@ module "network" {
 module "compute" {
   source         = "./modules/compute"
   subnet_id      = module.network.subnet_id
-  rg_name        = var.resource_group_name
-  rg_location    = var.resource_group_location
+  rg_name        = azurerm_resource_group.rg.name
+  rg_location    = azurerm_resource_group.rg.location
   blob_url       = module.storage.blob_url
   vm_name        = var.vm_name
   extension_name = var.extension_name
