@@ -13,12 +13,12 @@ sudo apt-get install python3-pip -yq
 # Create a directory for the app and download the files. 
 sudo mkdir /app
 # make sure to uncomment the line bellow and update the link with your GitHub username
-https://github.com/yaaszp/devops_todolist_terraform_task.git
+git clone https://github.com/yaaszp/devops_todolist_terraform_task.git
 sudo cp -r devops_todolist_terraform_task/app/* /app
 
 # create a service for the app via systemctl and start the app
 sudo mv /app/todoapp.service /etc/systemd/system/
 sudo chmod 777 /app/start.sh
 sudo systemctl daemon-reload
-sodo systemctl start todoapp
+sudo systemctl start todoapp
 sudo systemctl enable todoapp
