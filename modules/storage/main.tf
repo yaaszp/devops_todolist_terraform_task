@@ -9,7 +9,7 @@ resource "azurerm_storage_account" "storage-account" {
 resource "azurerm_storage_container" "todoapp-container" {
   name                  = var.container_name
   storage_account_name  = azurerm_storage_account.storage-account.name
-  container_access_type = "private"
+  container_access_type = "container"
 }
 
 resource "azurerm_storage_blob" "todoapp-blob" {

@@ -40,18 +40,19 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
-# resource "azurerm_virtual_machine_extension" "custom_script" {
-#   name                 = var.extension_name
-#   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
+resource "azurerm_virtual_machine_extension" "custom_script" {
+  name                 = var.extension_name
+  virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
 
-#   settings = <<SETTINGS
-#     {
-#       "fileUris": ["${var.blob_url}"],
-#       "commandToExecute": "./install-app.sh"
-#     }
-# SETTINGS
-# }
+  settings = <<SETTINGS
+    {
+      "fileUris": ["${var.blob_url}"],
+      "commandToExecute": "bash tfstate_blob"
+    }
+SETTINGS
+  depends_on = [azurerm_linux_virtual_machine.vm]
+}
 
