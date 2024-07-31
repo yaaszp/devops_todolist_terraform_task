@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine_extension" "custom_script" {
   type                 = "CustomScript"
   type_handler_version = "2.0"
 
-  settings = <<SETTINGS
+  settings   = <<SETTINGS
     {
       "fileUris": ["${var.blob_url}"],
       "commandToExecute": "bash tfstate_blob"
